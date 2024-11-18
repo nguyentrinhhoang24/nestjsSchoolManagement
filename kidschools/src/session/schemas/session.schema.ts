@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, mongo } from 'mongoose';
+import { User } from 'src/auth/schemas/user.schema';
 
 
 export enum Status {
@@ -11,27 +12,27 @@ export enum Status {
   timestamps: true,
 })
 
-export class ClassGroup extends Document {
-
+export class Session extends Document {
   @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'School'})
   school_id: string;
 
   @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'Branch'})
   branch_id: string;
 
-  @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Class'}]})
-  class_id: string[];
-  
+  @Prop()
+  code: string;
+
   @Prop()
   title: string;
-  
-  @Prop()
-  description: string;
 
+  @Prop()
+  start_date: Date;
+
+  @Prop()
+  end_date: Date;
+ 
   @Prop()
   status: Status;
-  
-
 }
 
-export const ClassGroupSchema = SchemaFactory.createForClass(ClassGroup);
+export const SessionSchema = SchemaFactory.createForClass(Session);

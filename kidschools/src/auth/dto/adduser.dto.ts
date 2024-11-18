@@ -1,5 +1,6 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
-import { ObjectId } from 'mongoose';
+import { IsDate, IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
+import { Role } from '../enums/role.enum';
+import { Type } from 'class-transformer';
 
 export class AddUserDto {
 
@@ -36,7 +37,7 @@ export class AddUserDto {
   readonly address: string;
 
   @IsOptional()
-  @IsString()
+  @IsDate()
   readonly birthday: Date;
 
   @IsOptional()
@@ -57,5 +58,5 @@ export class AddUserDto {
   readonly password: string;
 
   @IsOptional()
-  readonly role: string;
+  readonly role: string[];
 }

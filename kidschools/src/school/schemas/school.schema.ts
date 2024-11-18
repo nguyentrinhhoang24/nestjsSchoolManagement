@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, mongo } from 'mongoose';
 import { User } from 'src/auth/schemas/user.schema';
+import { Branch } from 'src/branch/schemas/branch.schema';
 
 
 export enum Status {
@@ -13,10 +14,10 @@ export enum Status {
 })
 
 export class School extends Document {
-  @Prop()
+  @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Branch'}]})
   branch_id: string[];
 
-  @Prop()
+  @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'ClassGroup'}]})
   classgroup_id: string[];
 
   @Prop()

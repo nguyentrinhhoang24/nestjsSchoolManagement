@@ -15,16 +15,16 @@ export class User extends Document {
   @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'School'})
   school_id: string;
 
-  @Prop()
+  @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'Branch'})
   branch_id: string;
 
-  @Prop()
+  @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'Class'})
   class_id: string;
 
-  @Prop()
+  @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'Bus'})
   bus_id: string;
 
-  @Prop()
+  @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Student'}]})
   student_id: string[];
 
   @Prop()
@@ -39,8 +39,8 @@ export class User extends Document {
   @Prop()
   birthday: Date;
 
-  @Prop({type: [{type: String, enum: Gender}],})
-  gender: Gender[];
+  @Prop({type: String, enum: Gender})
+  gender: Gender;
 
   @Prop()
   image: string;
@@ -51,8 +51,10 @@ export class User extends Document {
   @Prop()
   password: string;
 
-  @Prop({type: String, enum: Role})
-  role: Role;
+  @Prop({
+    type: [{ type: String, enum: Role }],
+  })
+  role: Role[];
 
 }
 

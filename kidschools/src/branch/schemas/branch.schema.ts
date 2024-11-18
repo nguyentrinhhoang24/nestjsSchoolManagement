@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 
 export enum Status {
@@ -13,7 +13,7 @@ export enum Status {
 
 export class Branch extends Document {
 
-  @Prop()
+  @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'School'})
   school_id: string;
 
   @Prop()

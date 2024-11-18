@@ -5,6 +5,7 @@ import { School } from 'src/school/schemas/school.schema';
 import { UpdateSchoolDto } from 'src/school/dto/updateschool.dto';
 import { CreateSchoolDto } from './dto/createschool.dto';
 import { User } from 'src/auth/schemas/user.schema';
+import { Role } from 'src/auth/enums/role.enum';
 
 @Injectable()
 export class SchoolService {
@@ -31,19 +32,22 @@ export class SchoolService {
 
   async updateById(id: string, school: UpdateSchoolDto, user: User): Promise<School> {
     // Kiểm tra nếu người dùng có vai trò là Schooladmin và đảm bảo họ chỉ được cập nhật trường của mình
-    if(user.role === 'schooladmin' && user.school_id !== id) {
-      throw new ForbiddenException('can not update this school');
-
-    } 
-    const updatedSchool = await this.schoolModel.findByIdAndUpdate(id, school, {
-      new: true,
-      runValidators: true,
-    })
-    if (!updatedSchool) {
-      throw new NotFoundException('School not found!');
+    if (user.role.includes(Role.Schooladmin) && user.school_id !== id) {
+        throw new ForbiddenException('can not update this school');
     }
+    
+    const updatedSchool = await this.schoolModel.findByIdAndUpdate(id, school, {
+        new: true,
+        runValidators: true,
+    });
+
+    if (!updatedSchool) {
+        throw new NotFoundException('School not found!');
+    }
+
     return updatedSchool;
-  }
+}
+
 
   async deleteById(id: string): Promise<School> {
     return await this.schoolModel.findByIdAndDelete(id);

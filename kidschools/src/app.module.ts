@@ -7,6 +7,11 @@ import { SchoolModule } from './school/school.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ClassGroupModule } from './classgroup/classgroup.module';
+import { ClassModule } from './class/class.module';
+import { SessionModule } from './session/session.module';
+import { MenuModule } from './menu/menu.module';
+import { SubjectModule } from './subject/subject.module';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -17,6 +22,11 @@ import { ClassGroupModule } from './classgroup/classgroup.module';
     BranchModule,
     SchoolModule,
     ClassGroupModule,
+    ClassModule,
+    SessionModule,
+    MenuModule,
+    SubjectModule,
+    StudentModule,
     AuthModule,
   ],
   controllers: [AppController],
