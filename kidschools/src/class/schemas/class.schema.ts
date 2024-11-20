@@ -25,6 +25,9 @@ export class Class extends Document {
   @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'User'})
   user_id: string;
 
+  @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Student'}]})
+  student_id: string[];
+
   @Prop()
   class_thumbnail: string;
 

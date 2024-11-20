@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsEnum, IsNotEmpty } from 'class-validator';
+import { IsString, IsOptional, IsEnum, IsNotEmpty, IsArray } from 'class-validator';
 import { Status } from '../schemas/class.schema';
 
 export class CreateClassDto {
@@ -18,6 +18,11 @@ export class CreateClassDto {
   @IsString()
   @IsOptional()
   readonly user_id: string;
+
+  @IsArray()
+  @IsString({each: true})
+  @IsOptional()
+  readonly student_id: string[];
 
   @IsString()
   @IsOptional()

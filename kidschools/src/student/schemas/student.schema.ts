@@ -11,6 +11,43 @@ export enum Gender {
     GIRL = 'girl'
 }
 
+export enum BloodGroup {
+    A_plus = 'A+',
+    A_minus = 'A-',
+    B_plus = 'B+',
+    B_minus = 'B-',
+    AB_plus = 'AB+',
+    AB_minus = 'AB-',
+    O_plus = 'O+',
+    O_minus = 'O-',
+}
+
+export class healthInfo {
+    @Prop()
+    height: number;
+
+    @Prop()
+    weight: number;
+
+    @Prop({ enum: BloodGroup })
+    bloodgroup: BloodGroup;
+
+    @Prop()
+    allergy: string;
+
+    @Prop()
+    heartrate: number;
+
+    @Prop()
+    eyes: string;
+
+    @Prop()
+    ears: string;
+
+    @Prop()
+    note: string;
+}
+
 @Schema({
     timestamps: true,
 })
@@ -42,6 +79,9 @@ export class Student extends Document {
 
     @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]})
     parent_id: string[];
+
+    @Prop({type: healthInfo})
+    health: healthInfo;
 
     @Prop()
     status: Status;

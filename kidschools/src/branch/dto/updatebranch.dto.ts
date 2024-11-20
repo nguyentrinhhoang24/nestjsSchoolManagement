@@ -7,6 +7,10 @@ export class UpdateBranchDto {
   @IsOptional()
   readonly school_id: string;
 
+  @IsOptional()
+  @IsString({each:true})
+  readonly classgroup_id: string[];
+
   @IsString()
   @IsOptional()
   readonly code: string;

@@ -1,6 +1,41 @@
 import { Type } from "class-transformer";
-import { IsDate, IsEnum, IsOptional, IsString } from "class-validator";
-import { Gender, Status } from "../schemas/student.schema";
+import { IsDate, IsEnum, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
+import { Gender, Status, BloodGroup } from "../schemas/student.schema";
+
+export class healthInfoDto {
+
+  @IsNumber()
+  @IsOptional()
+  readonly height: number;
+
+  @IsNumber()
+  @IsOptional()
+  readonly weight: number;
+
+  @IsEnum(BloodGroup, { message: 'Blood group must be A+, A-, B+, B-, AB+, AB-, O+ or O-.' })
+  @IsOptional()
+  readonly bloodgroup: BloodGroup;
+
+  @IsString()
+  @IsOptional()
+  readonly allergy: string;
+
+  @IsNumber()
+  @IsOptional()
+  readonly heartrate: number;
+
+  @IsString()
+  @IsOptional()
+  readonly eyes: string;
+
+  @IsString()
+  @IsOptional()
+  readonly ears: string;
+
+  @IsString()
+  @IsOptional()
+  readonly note: string;
+}
 
 export class UpdateStudentDto {
     @IsString()
@@ -40,6 +75,11 @@ export class UpdateStudentDto {
     @IsString()
     @IsOptional()
     readonly parent_id: string[];
+
+    @ValidateNested()
+    @Type(() => healthInfoDto)
+    @IsOptional()
+    readonly health: healthInfoDto;
 
     @IsString()
     @IsEnum(Status, { message: 'Please enter correct status.' })

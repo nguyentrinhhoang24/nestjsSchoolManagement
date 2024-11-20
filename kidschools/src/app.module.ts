@@ -12,6 +12,14 @@ import { SessionModule } from './session/session.module';
 import { MenuModule } from './menu/menu.module';
 import { SubjectModule } from './subject/subject.module';
 import { StudentModule } from './student/student.module';
+import { HealthExamModule } from './healthexam/healthexam.module';
+import { NewsModule } from './news/news.module';
+import { AlbumModule } from './album/album.module';
+import { FeeItemModule } from './feeitem/feeitem.module';
+import { InvoiceController } from './invoice/invoice.controller';
+import { InvoiceService } from './invoice/invoice.service';
+import { InvoiceModule } from './invoice/invoice.module';
+
 
 @Module({
   imports: [
@@ -27,9 +35,14 @@ import { StudentModule } from './student/student.module';
     MenuModule,
     SubjectModule,
     StudentModule,
+    HealthExamModule,
     AuthModule,
+    NewsModule,
+    AlbumModule,
+    FeeItemModule,
+    InvoiceModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, InvoiceController],
+  providers: [AppService, InvoiceService],
 })
 export class AppModule {}

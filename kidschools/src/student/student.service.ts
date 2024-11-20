@@ -13,7 +13,7 @@ export class StudentService {
         const students = await this.studentModel.find();
         return students;
       }
-    
+
       async create(createStudentDto: CreateStudentDto): Promise<Student> {
         const newStudent = await this.studentModel.create(createStudentDto);
         return newStudent;

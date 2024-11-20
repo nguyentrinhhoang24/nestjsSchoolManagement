@@ -5,7 +5,11 @@ export class CreateBranchDto {
   
   @IsString()
   @IsOptional()
-  readonly school_id: string;
+  school_id: string;
+
+  @IsOptional()
+  @IsString({each:true})
+  readonly classgroup_id: string[];
 
   @IsString()
   @IsOptional()

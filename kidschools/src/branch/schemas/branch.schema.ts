@@ -16,6 +16,9 @@ export class Branch extends Document {
   @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'School'})
   school_id: string;
 
+  @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'ClassGroup'}]})
+  classgroup_id: string[];
+
   @Prop()
   code: string;
   
