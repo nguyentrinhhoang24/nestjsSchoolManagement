@@ -1,7 +1,17 @@
 import { Type } from "class-transformer";
-import { IsString, IsNumber, IsEnum, IsDate, IsOptional } from "class-validator";
+import { IsString, IsNumber, IsEnum, IsDate, IsOptional, IsNotEmpty, IsArray, Min, ValidateNested } from "class-validator";
 import { PayMethod } from "../schemas/invoice.schema";
 
+class FeeItemDto {
+    @IsString()
+    @IsNotEmpty()
+    fee_item: string;
+  
+    @IsNumber()
+    @Min(1)
+    quantity: number;
+  }
+  
 export class CreateInvoiceDto {
     
     @IsString()
@@ -38,9 +48,12 @@ export class CreateInvoiceDto {
     @IsOptional()
     description: string;
 
-    @IsString()
+    @Type(() => FeeItemDto)
     @IsOptional()
-    feeitem_id: string[];
+    @IsNotEmpty({each: true})
+    @ValidateNested({ each: true })
+    @IsArray()
+    fee_items: FeeItemDto[];
 
     @IsNumber()
     @IsOptional()

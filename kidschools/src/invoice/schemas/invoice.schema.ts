@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import mongoose, { Document } from "mongoose";
+import { FeeItem } from "src/feeitem/schemas/feeitem.schema";
 
 export enum PayMethod {
     BANK = 'bank',
@@ -31,8 +32,11 @@ export class Invoice extends Document {
     @Prop()
     payment_method: PayMethod;
 
-    @Prop({type: [{type: mongoose.Schema.Types.ObjectId, ref: 'FeeItem'}]})
-    feeitem_id: string[];
+    @Prop({type: [{
+        fee_item: {type: mongoose.Schema.Types.ObjectId, ref: 'FeeItem'},
+        quantity: {type: Number},
+    }]})
+    fee_items: {fee_item: FeeItem | string; quantity: number }[];
 
     @Prop()
     total: number;

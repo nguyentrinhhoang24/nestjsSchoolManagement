@@ -42,7 +42,7 @@ import { InvoiceModule } from './invoice/invoice.module';
     FeeItemModule,
     InvoiceModule,
   ],
-  controllers: [AppController, InvoiceController],
-  providers: [AppService, InvoiceService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
