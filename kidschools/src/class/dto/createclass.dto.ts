@@ -5,6 +5,10 @@ export class CreateClassDto {
 
   @IsString()
   @IsOptional()
+  school_id: string;
+
+  @IsString()
+  @IsOptional()
   readonly branch_id: string;
 
   @IsString()

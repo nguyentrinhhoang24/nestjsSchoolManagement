@@ -13,6 +13,10 @@ export enum Status {
 })
 
 export class Class extends Document {
+
+  @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'School'})
+  school_id: string;
+
   @Prop({type: mongoose.Schema.Types.ObjectId, ref: 'Branch'})
   branch_id: string;
 

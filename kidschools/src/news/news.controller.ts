@@ -1,7 +1,7 @@
 import { Controller, Post, Put, Param, Body, Delete, Get } from '@nestjs/common';
 import { NewsService } from './news.service';
-import { UpdateNewsDto } from 'src/news/dto/updateNews.dto';
-import { CreateNewsDto } from 'src/news/dto/createNews.dto';
+import { UpdateNewsDto } from 'src/news/dto/updatenews.dto';
+import { CreateNewsDto } from 'src/news/dto/createnews.dto';
 import { News } from './schemas/news.schema';
 
 @Controller('News')

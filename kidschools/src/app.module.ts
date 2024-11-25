@@ -16,10 +16,8 @@ import { HealthExamModule } from './healthexam/healthexam.module';
 import { NewsModule } from './news/news.module';
 import { AlbumModule } from './album/album.module';
 import { FeeItemModule } from './feeitem/feeitem.module';
-import { InvoiceController } from './invoice/invoice.controller';
-import { InvoiceService } from './invoice/invoice.service';
 import { InvoiceModule } from './invoice/invoice.module';
-
+import { BusModule } from './bus/bus.module';
 
 @Module({
   imports: [
@@ -41,8 +39,9 @@ import { InvoiceModule } from './invoice/invoice.module';
     AlbumModule,
     FeeItemModule,
     InvoiceModule,
+    BusModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService ],
 })
 export class AppModule {}

@@ -1,8 +1,10 @@
 import { IsString, IsOptional, IsEnum } from 'class-validator';
 import { Status } from '../schemas/branch.schema';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateBranchDto {
   
+  @ApiProperty({description: 'school id the branch belongs to'})
   @IsString()
   @IsOptional()
   school_id: string;

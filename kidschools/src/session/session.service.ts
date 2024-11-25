@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Session } from 'src/session/schemas/Session.schema';
-import { UpdateSessionDto } from 'src/session/dto/updateSession.dto';
-import { CreateSessionDto } from 'src/session/dto/createSession.dto';
+import { Session } from 'src/session/schemas/session.schema';
+import { UpdateSessionDto } from 'src/session/dto/updatesession.dto';
+import { CreateSessionDto } from 'src/session/dto/createsession.dto';
 
 @Injectable()
 export class SessionService {

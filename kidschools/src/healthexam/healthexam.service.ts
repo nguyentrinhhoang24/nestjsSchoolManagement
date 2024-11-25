@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { HealthExam } from "./schemas/healthexam.schema";
-import { CreateHealthExamDto } from "./dto/createHealthExam.dto";
+import { CreateHealthExamDto } from "./dto/createhealthexam.dto";
 import { UpdateHealthExamDto } from "./dto/updatehealthexam.dto";
 
 @Injectable()
