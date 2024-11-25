@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { HealthExamService } from "./healthexam.service";
 import { HealthExam } from "./schemas/healthexam.schema";
-import { CreateHealthExamDto } from "./dto/createHealthExam.dto";
+import { CreateHealthExamDto } from "./dto/createhealthexam.dto";
 import { UpdateHealthExamDto } from "./dto/updatehealthexam.dto";
 
 @Controller('healthexam')

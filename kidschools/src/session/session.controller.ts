@@ -1,7 +1,7 @@
 import { Controller, Post, Put, Param, Body, Delete, Get } from '@nestjs/common';
 import { SessionService } from './session.service';
-import { CreateSessionDto } from './dto/createSession.dto';
-import { UpdateSessionDto } from './dto/updateSession.dto';
+import { CreateSessionDto } from './dto/createsession.dto';
+import { UpdateSessionDto } from './dto/updatesession.dto';
 import { Session } from './schemas/session.schema';
 
 @Controller('session')
