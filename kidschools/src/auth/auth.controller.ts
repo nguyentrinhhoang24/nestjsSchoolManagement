@@ -4,6 +4,7 @@ import { AddUserDto } from "./dto/adduser.dto";
 import { AuthService } from "./auth.service";
 import { Roles } from "./decorators/roles.decorator";
 import { Role } from "./enums/role.enum";
+import { User } from "./schemas/user.schema";
 
 
 @Controller('auth')
@@ -16,9 +17,14 @@ export class AuthController {
         return this.authService.addUser(addUserDto);
     }
 
-    @Get('/login')
+    @Post('/login')
     login(@Body() loginDto: LoginDto): Promise<{token: string}> {
         return this.authService.login(loginDto);
     }
+
+    @Get()
+    async getAll(): Promise<User[]> {
+        return this.authService.findAll();
+      }
 
 }

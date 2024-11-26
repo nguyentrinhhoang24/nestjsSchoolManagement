@@ -19,9 +19,9 @@ export class RolesGuard implements CanActivate {
     const user = request.user;
 
     // Nếu người dùng có vai trò 'schooladmin' và trường hợp user có school_id, gán vào request
-    if (user?.roles?.includes('schooladmin') && user.school_id) {
-        request.school_id = user.school_id;
-    }
+    // if (user?.roles?.includes('schooladmin') && user.school_id) {
+    //     request.school_id = user.school_id;
+    // }
 
     return matchRoles(requiredRoles, user?.role);
   }

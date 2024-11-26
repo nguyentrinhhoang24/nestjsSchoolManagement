@@ -18,6 +18,7 @@ import { AlbumModule } from './album/album.module';
 import { FeeItemModule } from './feeitem/feeitem.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { BusModule } from './bus/bus.module';
+import { NotificationModule } from './notification/notification.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { BusModule } from './bus/bus.module';
     FeeItemModule,
     InvoiceModule,
     BusModule,
+    NotificationModule,
   ],
   controllers: [AppController],
   providers: [AppService ],
