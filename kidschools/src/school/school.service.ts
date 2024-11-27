@@ -18,8 +18,8 @@ export class SchoolService {
 
   async create(school: CreateSchoolDto, user: User): Promise<School> {
     const data = Object.assign(school, { user: user._id });
-    const res = await this.schoolModel.create(data);
-    return res;
+    const newSchool = await this.schoolModel.create(data);
+    return newSchool;
   }
 
   async findById(id: string): Promise<School> {
@@ -32,22 +32,27 @@ export class SchoolService {
 
   async updateById(id: string, school: UpdateSchoolDto, user: User): Promise<School> {
     // Kiểm tra nếu người dùng có vai trò là Schooladmin và đảm bảo họ chỉ được cập nhật trường của mình
-    if (user.role.includes(Role.Schooladmin) && user.school_id !== id) {
-        throw new ForbiddenException('can not update this school');
+    if (user.role.includes(Role.Schooladmin)) {
+      console.log(typeof id);
+      console.log(typeof user.school_id);
+      if (user.school_id != id) {
+        throw new ForbiddenException('can not update this school :))');
+      }
+      else {
+        const updatedSchool = await this.schoolModel.findByIdAndUpdate(id, school, {
+          new: true,
+          runValidators: true,
+      });
+  
+      if (!updatedSchool) {
+          throw new NotFoundException('School not found :)))');
+      }
+      return updatedSchool;
+      }
+    } else {
+      throw new ForbiddenException('dont have permission to update :))')
     }
-    
-    const updatedSchool = await this.schoolModel.findByIdAndUpdate(id, school, {
-        new: true,
-        runValidators: true,
-    });
-
-    if (!updatedSchool) {
-        throw new NotFoundException('School not found!');
-    }
-
-    return updatedSchool;
 }
-
 
   async deleteById(id: string): Promise<School> {
     return await this.schoolModel.findByIdAndDelete(id);
