@@ -6,3 +6,6 @@
 - Chức năng nhắn tin
 - Chức năng điểm danh
 - Chức năng chuyển lớp
+- Tách chức năng add user thành add schooladmin và add staff
+  add school admin dành cho user role superadmin
+  add staff dành cho user role school admin
